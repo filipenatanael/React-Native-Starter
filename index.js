@@ -2,21 +2,22 @@
 import React from 'react';
 import { Text, AppRegistry } from 'react-native';
 
-//Format
-const Estilos = {
-  Texto: {
+//Formatting
+const Styles = {
+  Text: {
     fontSize: 50,
     backgroundColor: '#3EDE5B',
-    height: 300,
-    //width: 300
+    paddingTop: 20,
+    paddingBottom: 30,
+    margin: 10,
+    marginHorizontal: 5,
   }
 };
-
 
 //Create component
 const App = () => {
   return (
-    <Text style={Estilos.Texto}>Olá</Text>
+    <Text style={Styles.Text}>Hello World!</Text>
   );
 }
 //Render to device
