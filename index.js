@@ -1,30 +1,39 @@
 //Import
 import React from 'react';
-import { Text, AppRegistry } from 'react-native';
+import { Text, View, AppRegistry } from 'react-native';
+
+//Create component
+const App = () => {
+  const { ViewStyle, TextStyle } = Styles;
+  return (
+    <View style={ViewStyle}>
+    <Text style={TextStyle}>Hello World!</Text>
+    </View>
+  );
+};
+
 
 //Formatting
 const Styles = {
-  Text: {
+  TextStyle: {
     fontSize: 50,
-    backgroundColor: '#3EDE5B',
+    backgroundColor: '#99FD77',
     paddingTop: 20,
     paddingBottom: 30,
     margin: 10,
     marginHorizontal: 10,
-    color: '#fff',
-    //fontStyle: 'italic',
+    color: '#000',
     fontWeight: 'bold', /* Between 100 and 900 */
     textAlign: 'center',
-    //textDecorationLine: 'underline line-through',
-
-  }
+  },
+  ViewStyle: {
+    backgroundColor: '#FFF8DC',
+    height: 300,
+    justifyContent: 'center', /* Horizontal alignment */
+    /* alignItems: 'center',    Vertical alignment */
+  },
 };
 
-//Create component
-const App = () => {
-  return (
-    <Text style={Styles.Text}>Hello World!</Text>
-  );
-}
+
 //Render to device
 AppRegistry.registerComponent('ReactNativeStarter', () => App);
