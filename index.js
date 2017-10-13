@@ -5,12 +5,13 @@ import { Text, AppRegistry } from 'react-native';
 //Formatting
 const Styles = {
   Text: {
-    fontSize: 50,
+    fontSize: 30,
     backgroundColor: '#3EDE5B',
-    paddingTop: 20,
-    paddingBottom: 30,
-    margin: 10,
-    marginHorizontal: 5,
+    margin: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 15 },
+    shadowOpacity: 1
+
   }
 };
 
