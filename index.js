@@ -4,15 +4,15 @@ import { Text, View, AppRegistry } from 'react-native';
 
 //Create component
 const App = () => {
-  const { ViewStyle, TextStyle1, TextStyle2, } = Styles;
+  const { ViewStyle, TextStyle1, TextStyle2, TextStyle3, } = Styles;
   return (
     <View style={ViewStyle}>
     <Text style={TextStyle1}>Hello World! 1</Text>
     <Text style={TextStyle2}>Hello World! 2</Text>
+    <Text style={TextStyle3}>Hello World! 3</Text>
     </View>
   );
 };
-
 
 //Formatting
 const Styles = {
@@ -38,9 +38,20 @@ const Styles = {
     fontWeight: 'bold', /* Between 100 and 900 */
     textAlign: 'center',
   },
+  TextStyle3: {
+    fontSize: 50,
+    backgroundColor: '#E2A9F3',
+    paddingTop: 20,
+    paddingBottom: 30,
+    margin: 10,
+    marginHorizontal: 10,
+    color: '#000',
+    fontWeight: 'bold', /* Between 100 and 900 */
+    textAlign: 'center',
+  },
   ViewStyle: {
     backgroundColor: '#FFF8DC',
-    height: 300,
+    height: 500,
     justifyContent: 'center', /* Horizontal alignment */
     /* alignItems: 'center',    Vertical alignment */
     flexDirection: 'column',
