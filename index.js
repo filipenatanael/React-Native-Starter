@@ -26,7 +26,10 @@ const Styles = {
     padding: 10,
     borderColor: '#1d8eb8',
     borderWidth: 3,
-    borderRadius: 10,
+    borderRadius: 50,
+    elevation: 5,
+    /*Shadow props are only for iOS. With Android,
+    you can use elevation in your View style.*/
   },
   TextButton: {
     color: '#fff',
