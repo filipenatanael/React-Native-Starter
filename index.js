@@ -1,6 +1,6 @@
 //Import
 import React from 'react';
-import { View, Button, AppRegistry } from 'react-native';
+import { View, Text, TouchableOpacity, AppRegistry } from 'react-native';
 
 
 const sayHello = () => {
@@ -9,21 +9,32 @@ const sayHello = () => {
 
 //Create component
 const App = () => {
-  const { ViewStyle, } = Styles;
+  const { ViewStyle, CustomButton, TextButton, } = Styles;
   return (
     <View style={ViewStyle}>
-     <Button
-     title='Say Hello'
-     color='#000'
-     accessibilityLabel='Click here to say hello!'
-     onPress={sayHello}
-     />
+       <TouchableOpacity style={CustomButton}>
+         <Text style={TextButton}>Click Here</Text>
+       </TouchableOpacity>
     </View>
   );
 };
 
 //Formatting
 const Styles = {
+  CustomButton: {
+    backgroundColor: '#000',
+    padding: 10,
+    borderColor: '#1d8eb8',
+    borderWidth: 3,
+    borderRadius: 10,
+  },
+  TextButton: {
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+
+  },
   ViewStyle: {
     backgroundColor: '#FFF8DC',
     height: 500,
