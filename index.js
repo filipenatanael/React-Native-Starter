@@ -1,47 +1,26 @@
-//Import
-import React from 'react';
-import { View, Image, Text, AppRegistry } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, AppRegistry } from 'react-native';
 
-
-const sayHello = () => {
-  alert('Hello');
+class MyComponent extends Component {
+  render() {
+    return (
+      <View>
+      <Text>{this.props.message}</Text>
+      <Text>My name is {this.props.name}</Text>
+      </View>
+    );
+  }
 }
 
-//Create component
-const App = () => {
-  const { ViewStyle, ImageStyle, TextStyle, } = Styles;
-  return (
-    <View style={ViewStyle}>
-    <Image style={ImageStyle} source={require('./images/react-native.png')}>
-    <Text style={TextStyle}>Click here to read more about React Native.</Text>
-    </Image>
-    </View>
-  );
-};
+class App extends Component {
+  render() {
+    return (
+      <MyComponent
+      name='DeadPool.'
+      message='Hello!!'
+      ></MyComponent>
+    );
+  }
+}
 
-//Formatting
-const Styles = {
-  ImageStyle: {
-    width: 300,
-    height: 300,
-    justifyContent: 'flex-end',
-  },
-  TextStyle: {
-    wigth: 250,
-    hegth: 50,
-    fontSize: 25,
-    textAlign: 'center',
-    color: '#fff',
-  },
-  ViewStyle: {
-    backgroundColor: '#FFF8DC',
-    height: 500,
-    justifyContent: 'center', /* Horizontal alignment */
-    alignItems: 'center', 
-    //flexDirection: 'column',
-  },
-};
-
-
-//Render to device
 AppRegistry.registerComponent('ReactNativeStarter', () => App);
