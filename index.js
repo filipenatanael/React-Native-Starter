@@ -1,6 +1,6 @@
 //Import
 import React from 'react';
-import { View, Text, TouchableOpacity, AppRegistry } from 'react-native';
+import { View, Image, Text, AppRegistry } from 'react-native';
 
 
 const sayHello = () => {
@@ -9,41 +9,36 @@ const sayHello = () => {
 
 //Create component
 const App = () => {
-  const { ViewStyle, CustomButton, TextButton, } = Styles;
+  const { ViewStyle, ImageStyle, TextStyle, } = Styles;
   return (
     <View style={ViewStyle}>
-       <TouchableOpacity style={CustomButton}>
-         <Text style={TextButton}>Click Here</Text>
-       </TouchableOpacity>
+    <Image style={ImageStyle} source={require('./images/react-native.png')}>
+    <Text style={TextStyle}>Click here to read more about React Native.</Text>
+    </Image>
     </View>
   );
 };
 
 //Formatting
 const Styles = {
-  CustomButton: {
-    backgroundColor: '#000',
-    padding: 10,
-    borderColor: '#1d8eb8',
-    borderWidth: 3,
-    borderRadius: 50,
-    elevation: 5,
-    /*Shadow props are only for iOS. With Android,
-    you can use elevation in your View style.*/
+  ImageStyle: {
+    width: 300,
+    height: 300,
+    justifyContent: 'flex-end',
   },
-  TextButton: {
+  TextStyle: {
+    wigth: 250,
+    hegth: 50,
+    fontSize: 25,
+    textAlign: 'center',
     color: '#fff',
-    fontSize: 15,
-    fontWeight: 'bold',
-    alignSelf: 'center',
-
   },
   ViewStyle: {
     backgroundColor: '#FFF8DC',
     height: 500,
     justifyContent: 'center', /* Horizontal alignment */
-    /* alignItems: 'center',    Vertical alignment */
-    flexDirection: 'column',
+    alignItems: 'center', 
+    //flexDirection: 'column',
   },
 };
 
