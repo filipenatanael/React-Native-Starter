@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-  View,
+  ScrollView,
+  StyleSheet,
 } from 'react-native';
 import axios from 'axios';
 import Item from './Item';
@@ -20,9 +21,15 @@ export default class ItemList extends Component {
 
   render() {
     return (
-      <View>
+      <ScrollView style={styles.ScrollView}>
       { this.state.itemList.map(item => { return (<Item key={item.titulo} item={item} />)})}
-      </View>
+      </ScrollView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+    ScrollView: {
+      backgroundColor: '#EAECEE',
+    }
+});
