@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View, Button, } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+
+
+
+
+
+AppRegistry.registerComponent('ReactNativeStarter', () => AppMy);
+
+
+/*
+import { StackNavigator } from 'react-navigation';
 import ProfileScreen from './ProfileScreen';
 
 
@@ -26,7 +36,4 @@ const AppMy = StackNavigator({
   Profile: { screen: ProfileScreen },
 });
 
-
-
-
-AppRegistry.registerComponent('ReactNativeStarter', () => AppMy);
+*/
