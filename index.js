@@ -1,39 +1,32 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View, Button, } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import ProfileScreen from './ProfileScreen';
 
-class ChatScreen extends Component {
-  static navigationOptions = {
-    title: 'Chat with my friend',
-  };
-  render() {
-    return (
-      <View>
-        <Text>I am happy to see you!</Text>
-      </View>
-    );
-  }
-}
 
-class HomeScreen extends Component {
+export default class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Welcome',
   };
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View>
-        <Text>Hello, how are you? </Text>
-        <Button onPress={() => navigate('Chat')} title="Go to Next Page!" />
-      </View>
+      <Button
+        title="Go to Jane's profile"
+        onPress={() =>
+          navigate('Profile', { name: 'Jane' })
+        }
+      />
     );
   }
 }
 
-export const SimpleApp = StackNavigator({
+const AppMy = StackNavigator({
   Home: { screen: HomeScreen },
-  Chat: { screen: ChatScreen },
+  Profile: { screen: ProfileScreen },
 });
 
 
-AppRegistry.registerComponent('ReactNativeStarter', () => SimpleApp);
+
+
+AppRegistry.registerComponent('ReactNativeStarter', () => AppMy);
