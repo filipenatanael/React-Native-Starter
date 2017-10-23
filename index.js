@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import { AppRegistry } from 'react-native';
+import { AppRegistry, View } from 'react-native';
 
-import ItemList from './src/Components/ItemList';
+import Application from './src/Application';
 
-class App extends Component<{}> {
-  render() {
-    return (
-      <ItemList />
-    );
-  }
-}
+
+const App = () => (
+   <Application />
+);
 
 
 AppRegistry.registerComponent('ReactNativeStarter', () => App);
