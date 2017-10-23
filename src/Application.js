@@ -1,9 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import Top from './Components/Top';
-import Results from './Components/Results';
-import Dashboard from './Components/Dashboard';
+//import Top from './Components/index';
+import { Top, Results, Dashboard } from './Components';
 
 export default props => (
   <View>

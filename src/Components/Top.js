@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export default (props) => (
+const Top = (props) => (
     <View>
     <Text>Top</Text>
     </View>
-  )
+);
+
+export { Top };
