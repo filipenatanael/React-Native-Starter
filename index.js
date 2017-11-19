@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { AppRegistry, View } from 'react-native';
+import React from 'react';
+import { AppRegistry } from 'react-native';
 
-import Application from './src/Application';
+import Geolocation from './src/Components/Geolocation';
 
 
 const App = () => (
-   <Application />
+   <Geolocation />
 );
 
 
