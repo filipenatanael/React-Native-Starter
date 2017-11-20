@@ -1,11 +1,11 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
 
-import Geolocation from './src/Components/Geolocation';
+import GeolocationTesting from './src/Components/GeolocationTesting';
 
 
 const App = () => (
-   <Geolocation />
+   <GeolocationTesting />
 );
 
 
