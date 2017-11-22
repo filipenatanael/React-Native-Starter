@@ -7,7 +7,6 @@ import {
 export default class GeolocationTesting extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       latitude: null,
       longitude: null,
@@ -19,8 +18,6 @@ export default class GeolocationTesting extends Component {
     console.log('entrou no componentDidMount!');
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log('Entrou no getCurrentPosition');
-        console.log(position.coords.latitude);
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
@@ -28,9 +25,8 @@ export default class GeolocationTesting extends Component {
         });
       },
       (error) => this.setState({ error: error.message }),
-      { enableHighAccuracy: false, timeout: 50000, maximumAge: 5000 },
+      { enableHighAccuracy: true, timeout: 20000 }
     );
-
   }
 
   render() {
