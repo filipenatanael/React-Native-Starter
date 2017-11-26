@@ -14,21 +14,21 @@ const ASPECT_RADIO = width / height
 const LATITUDE_DELTA = 0.0922
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RADIO
 
-export default class GeolocationTesting extends Component {
+export default class Geolocation extends Component {
   constructor(props) {
     super(props);
     this.state = {
       initialPosition:
       {
-        latitude: 0,
-        longitude: 0,
+        latitude: -19.9166813,
+        longitude: -43.9344931,
         latitudeDelta: 0,
         longitudeDelta: 0,
       },
       markerPosition:
       {
-        latitude: 40.7143528,
-        longitude: -74.0059731
+        latitude: 0,
+        longitude: 0
       }
     }
   }
@@ -54,7 +54,8 @@ export default class GeolocationTesting extends Component {
     { enableHighAccuracy: true, timeout: 20000 }
   );
 
-  setTimeout(function () {
+
+
     this.watchID = navigator.geolocation.watchPosition((position) => {
       var lat = parseFloat(position.coords.latitude)
       var long = parseFloat(position.coords.longitude)
@@ -69,7 +70,7 @@ export default class GeolocationTesting extends Component {
       this.setState({ initialPosition: lastRegion })
       this.setState({ markerPosition: lastRegion })
     })
-  }, 30500);
+
 
 }
 
@@ -82,7 +83,7 @@ render() {
 
   return (
     <View style={styles.container}>
-    <MapView style={styles.map} region={this.state.initialPosition} />
+    <MapView mapType={'standard'} style={styles.map} region={this.state.initialPosition} />
     <MapView.Marker coordinate={this.state.markerPosition}>
     <View style={styles.radius}>
     <View style={styles.marker}>
@@ -94,6 +95,14 @@ render() {
 }
 }
 
+
+
+/*
+<View style={styles.radius}>
+<View style={styles.marker}>
+</View>
+</View>
+*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -109,9 +118,9 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   radius: {
-    height: 50,
-    width: 50,
-    borderRadius: 50 / 2,
+    height: 30,
+    width: 30,
+    borderRadius: 30 / 2,
     overflow: 'hidden',
     backgroundColor: '#000',
     borderWidth: 1,
