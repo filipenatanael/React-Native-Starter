@@ -81,9 +81,7 @@ componentWillUnmount() {
   navigator.geolocation.clearWatch(this.watchID);
 }
 
-
 render() {
-
   return (
     <View style={styles.container}>
     <MapView mapType={'standard'} style={styles.map} region={this.state.initialPosition} />
@@ -95,7 +93,13 @@ render() {
     </MapView.Marker>
     <View style={{ flex: 1, justifyContent: 'flex-end' }}>
     <View style={{ width: SCREEN_WIDTH, height: 50, paddingTop: 15, backgroundColor: '#fff' }}>
-    <Text style={{ textAlign: 'center', fontSize: 15 }}>coordenates here</Text>
+    <Text style={{ textAlign: 'center', fontSize: 15 }}>
+    {
+      'Latitude: '+JSON.stringify(this.state.initialPosition.latitude)
+      'Logitude: '+JSON.stringify(this.state.initialPosition.logitude)
+
+    }
+    </Text>
     </View>
     </View>
     </View>
