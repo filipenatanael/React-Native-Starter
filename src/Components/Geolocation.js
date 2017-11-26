@@ -1,8 +1,11 @@
+import firebase from 'firebase';
 import React, { Component } from 'react';
 import {
   View,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  Alert,
+  Text
 } from 'react-native';
 import MapView from 'react-native-maps';
 
@@ -37,11 +40,10 @@ export default class Geolocation extends Component {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      var lat = parseFloat(position.coords.latitude)
-      var long = parseFloat(position.coords.longitude)
-      console.log(position.coords.latitude);
-      console.log(position.coords.longitude);
-      var initialRegion = {
+      let lat = parseFloat(position.coords.latitude)
+      let long = parseFloat(position.coords.longitude)
+
+      let initialRegion = {
         latitude: lat,
         longitude: long,
         latitudeDelta: LATITUDE_DELTA,
@@ -50,32 +52,33 @@ export default class Geolocation extends Component {
       this.setState({ initialPosition: initialRegion })
       this.setState({ markerPosition: initialRegion })
     },
-    (error) => alert(JSON.stringify(error)),
+    (error) => Alert.alert(JSON.stringify(error)),
     { enableHighAccuracy: true, timeout: 20000 }
   );
 
+  this.watchID = navigator.geolocation.watchPosition((position) => {
+    let lat = parseFloat(position.coords.latitude);
+    let long = parseFloat(position.coords.longitude);
+    let lastRegion = {
+      latitude: lat,
+      longitude: long,
+      latitudeDelta: LATITUDE_DELTA,
+      longitudeDelta: LONGITUDE_DELTA,
+    };
 
+    this.setState({ initialPosition: lastRegion });
+    this.setState({ markerPosition: lastRegion });
 
-    this.watchID = navigator.geolocation.watchPosition((position) => {
-      var lat = parseFloat(position.coords.latitude)
-      var long = parseFloat(position.coords.longitude)
-      console.log(position.coords.latitude);
-      var lastRegion = {
-        latitude: lat,
-        longitude: long,
-        latitudeDelta: LATITUDE_DELTA,
-        longitudeDelta: LONGITUDE_DELTA,
-      }
-
-      this.setState({ initialPosition: lastRegion })
-      this.setState({ markerPosition: lastRegion })
-    })
-
-
+    const coordenates = firebase.database().ref('coordenates');
+    coordenates.push().set({
+      latitude: lastRegion.latitude,
+      longitude: lastRegion.longitude
+    });
+  });
 }
 
 componentWillUnmount() {
-  navigator.geolocation.clearWatch(this.watchID)
+  navigator.geolocation.clearWatch(this.watchID);
 }
 
 
@@ -90,19 +93,16 @@ render() {
     </View>
     </View>
     </MapView.Marker>
+    <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+    <View style={{ width: SCREEN_WIDTH, height: 50, paddingTop: 15, backgroundColor: '#fff' }}>
+    <Text style={{ textAlign: 'center', fontSize: 15 }}>coordenates here</Text>
+    </View>
+    </View>
     </View>
   );
 }
 }
 
-
-
-/*
-<View style={styles.radius}>
-<View style={styles.marker}>
-</View>
-</View>
-*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
+    bottom: 50,
   },
   radius: {
     height: 30,
