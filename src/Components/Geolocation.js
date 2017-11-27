@@ -14,7 +14,7 @@ const { width, height } = Dimensions.get('window')
 const SCREEN_HEIGHT = height
 const SCREEN_WIDTH = width
 const ASPECT_RADIO = width / height
-const LATITUDE_DELTA = 0.0922
+const LATITUDE_DELTA = 0.000922
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RADIO
 
 export default class Geolocation extends Component {
@@ -84,20 +84,19 @@ componentWillUnmount() {
 render() {
   return (
     <View style={styles.container}>
-    <MapView mapType={'standard'} style={styles.map} region={this.state.initialPosition} />
+    <MapView style={styles.map} region={this.state.initialPosition} />
     <MapView.Marker coordinate={this.state.markerPosition}>
     <View style={styles.radius}>
     <View style={styles.marker}>
     </View>
     </View>
     </MapView.Marker>
-    <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-    <View style={{ width: SCREEN_WIDTH, height: 50, paddingTop: 15, backgroundColor: '#fff' }}>
-    <Text style={{ textAlign: 'center', fontSize: 15 }}>
+    <View style={styles.coordContainer}>
+    <View style={styles.coordRow}>
+    <Text style={styles.coordText}>
     {
       'Latitude: '+JSON.stringify(this.state.initialPosition.latitude)
-      'Logitude: '+JSON.stringify(this.state.initialPosition.logitude)
-
+      +' Logitude: '+JSON.stringify(this.state.initialPosition.longitude)
     }
     </Text>
     </View>
@@ -105,6 +104,8 @@ render() {
     </View>
   );
 }
+
+
 }
 
 const styles = StyleSheet.create({
@@ -140,5 +141,19 @@ const styles = StyleSheet.create({
     borderRadius: 20 / 2,
     overflow: 'hidden',
     backgroundColor: '#ACFA58'
+  },
+  coordContainer: {
+    flex: 1,
+    justifyContent: 'flex-end'
+  },
+  coordRow: {
+    width: SCREEN_WIDTH,
+    height: 50,
+    paddingTop: 15,
+    backgroundColor: '#fff'
+  },
+  coordText: {
+    textAlign: 'center',
+    fontSize: 15
   }
 });
