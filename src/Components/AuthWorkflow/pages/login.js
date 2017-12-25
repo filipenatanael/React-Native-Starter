@@ -7,14 +7,14 @@ export default ({ navigation }) => (
   <View style={{ paddingVertical: 20 }}>
     <Card>
       <FormLabel>E-mail</FormLabel>
-      <FormInput placeholder="Digite seu e-mail" />
-      <FormLabel>Senha</FormLabel>
-      <FormInput secureTextEntry placeholder="Digite sua senha" />
+      <FormInput placeholder="Enter your email" />
+      <FormLabel>Password</FormLabel>
+      <FormInput secureTextEntry placeholder="Enter your password" />
 
       <Button
         buttonStyle={{ marginTop: 20 }}
         backgroundColor="#03A9F4"
-        title="Entrar"
+        title="Sign In"
         onPress={() => {
           onSignIn().then(() => navigation.navigate("SignedIn"));
         }}
